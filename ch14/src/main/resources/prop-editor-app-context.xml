@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:annotation-config />
+	
+	<context:property-placeholder location="classpath:application.properties" />
+	
+	<!-- 
+		String을 java.util.Date 타입으로 변환하는 커스텀 에디터를 정의
+		날짜 포맷 패턴도 프로퍼티 파일로 외부화 했다. 
+	-->
+	<bean id="dateTimeEditor" class="com.prospring3.ch14.pe.editor.DateTimeEditor">
+		<constructor-arg value="${date.format.pattern}" />
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="org.joda.time.DateTime">
+					<ref local="dateTimeEditor" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="clarence" class="com.prospring3.ch14.domain.Contact">
+		<property name="firstName" value="Clarence" />
+		<property name="lastName" value="Ho" />
+		<property name="birthDate" value="1970-12-31" />
+		<property name="personalSite" value="http://www.clarence.com" />
+	</bean>
+
+	<!-- 속성을 프로퍼티 파일로 외부화 했다. -->
+	<bean id="myContact" class="com.prospring3.ch14.domain.Contact">
+		<property name="firstName" value="${myContact.firstName}" />
+		<property name="lastName" value="${myContact.lastName}" />
+		<property name="birthDate" value="${myContact.birthDate}" />
+		<property name="personalSite" value="${myContact.personalSite}" />
+	</bean>
+
+</beans>
