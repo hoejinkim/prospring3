@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:annotation-config />
+	
+	<bean id="conversionService" class="com.prospring3.ch14.convserv.factory.ApplicationConversionServiceFactoryBean" />
+	
+	<bean id="clarence" class="com.prospring3.ch14.domain.Contact">
+		<property name="firstName" value="Clarence" />
+		<property name="lastName" value="Ho" />
+		<property name="birthDate" value="1978-08-09" />
+		<property name="personalSite" value="http://www.clarence.com" />
+	</bean>
+
+</beans>

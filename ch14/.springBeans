@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/prop-editor-app-context.xml</config>
 		<config>src/main/resources/conv-service-app-context.xml</config>
+		<config>src/main/resources/conv-format-service-app-context.xml</config>
 	</configs>
 	<configSets>
 		<configSet>
