@@ -11,6 +11,7 @@
 		<property name="converters">
 			<list>
 				<bean class="com.prospring3.ch14.converter.StringToDateTimeConverter" />
+				<bean class="com.prospring3.ch14.converter.ContactToAnotherContactConverter" />
 			</list>
 		</property>
 	</bean>
