@@ -1,8 +1,10 @@
 package com.prospring3.ch14.domain;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
+import com.prospring3.ch14.jsr303.CheckIndividualCustomer;
+
+//@CheckIndividualCustomer
 public class Customer {
 
 	@NotNull
@@ -50,6 +52,18 @@ public class Customer {
 	
 	public boolean isIndividualCustomer() {
 		return this.customerType.equals(CustomerType.INDIVIDUAL);
+	}
+	
+	@AssertTrue(message = "Individaul customer should have gender and last name defined")
+	private boolean isValidIndividualCustomer() {
+		boolean result = true;
+		
+		if (getCustomerType() != null
+				&& (isIndividualCustomer() && (gender == null || lastName == null))) {
+			result = false;
+		}
+		
+		return result;
 	}
 	
 }
