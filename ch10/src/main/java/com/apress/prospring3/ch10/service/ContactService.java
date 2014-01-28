@@ -10,4 +10,6 @@ public interface ContactService {
 	
 	public List<Contact> findByFirstName(String firstName);
 	
+	public Contact findById(Long id);
+	
 }

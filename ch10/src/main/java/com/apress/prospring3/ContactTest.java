@@ -1,5 +1,6 @@
 package com.apress.prospring3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -18,6 +19,11 @@ public class ContactTest {
 		
 		listContacts(contactService.findAll());
 		listContacts(contactService.findByFirstName("Clarence"));
+		
+		Contact contact = contactService.findById(1L);
+		List<Contact> contacts = new ArrayList<Contact>();
+		contacts.add(contact);
+		listContacts(contacts);
 	}
 	
 	private static void listContacts(List<Contact> contacts) {
